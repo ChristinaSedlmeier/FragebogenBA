@@ -30,8 +30,12 @@ public class GameController : MonoBehaviour
     {
         dataController = FindObjectOfType<DataController>();
         Debug.Log("InStart of GameController");
+
         currentRoundData = dataController.GetCurrentRoundData();
+
+
         questionPool = currentRoundData.questions;
+        Debug.Log(questionPool.Length + "isLength");
         menuScreenController = FindObjectOfType<MenuScreenController>();
 
         
