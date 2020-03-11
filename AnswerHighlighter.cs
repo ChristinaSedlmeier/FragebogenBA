@@ -8,6 +8,7 @@ public class AnswerHighlighter : MonoBehaviour
 {
 
     ToggleGroup toggleGroupInstance;
+    int toggleId = 3;
 
     public Toggle currentSelection{ 
         get {
@@ -18,13 +19,30 @@ public class AnswerHighlighter : MonoBehaviour
     void Start()
     {
         toggleGroupInstance = GetComponent<ToggleGroup>();
-        SelectToggle(1);
+        SelectToggle(3);
     }
 
     public void SelectToggle(int id)
     {
+        toggleId = id;
         var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle>();
         toggles[id].isOn = true;
+      
+    }
+
+    public void changeToggleID(int direction)
+    {
+        if(toggleId == 5 && direction == 1)
+        {  
+            SelectToggle(0);
+
+        } else if (toggleId == 0 && direction == -1)
+        {
+            
+            SelectToggle(5);
+        }
+        else { SelectToggle(toggleId + direction); }
+        
     }
 
     // Update is called once per frame
